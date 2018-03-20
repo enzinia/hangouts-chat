@@ -1,3 +1,4 @@
+require_relative 'hangouts-chat/version'
 require_relative 'hangouts-chat/http'
 
 module HangoutsChat
