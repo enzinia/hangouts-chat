@@ -1,5 +1,5 @@
-require_relative 'hangouts-chat/version'
-require_relative 'hangouts-chat/http'
+require_relative 'hangouts_chat/version'
+require_relative 'hangouts_chat/http'
 
 module HangoutsChat
   class Sender
