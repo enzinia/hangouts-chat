@@ -1,14 +1,20 @@
+$LOAD_PATH << File.expand_path("../lib", __FILE__)
+require 'hangouts_chat/version'
+
 Gem::Specification.new do |s|
   s.name        = 'hangouts-chat'
-  s.version     = '0.0.1'
-  s.date        = '2018-03-20'
-  s.summary     = 'Send messages to Hangouts Chat rooms using incoming webhooks'
-  s.description = 'Send messages to Hangouts Chat rooms using incoming webhooks'
+  s.version     = HangoutsChat::VERSION
+  s.summary     = 'Library for sending messages to Hangouts Chat rooms'
+  s.description = %q{Send messages to G Suite Hangouts Chat rooms using
+                     incoming webhooks and Net::HTTP::Post}
   s.authors     = ['enzinia']
   s.email       = 'vkukovskij@gmail.com'
-  s.files       = Dir['lib/**/*.rb']
   s.homepage    = 'https://github.com/enzinia/hangouts-chat'
   s.license     = 'MIT'
 
-  s.add_development_dependency 'webmock'
+  s.files       = Dir['lib/**/*.rb']
+  s.test_files  = Dir['test/**/*.rb']
+
+  s.add_development_dependency 'rubocop', '<= 0.54.0'
+  s.add_development_dependency 'webmock', '~> 3'
 end
