@@ -9,4 +9,6 @@ Gem::Specification.new do |s|
   s.files       = Dir['lib/**/*.rb']
   s.homepage    = 'https://github.com/enzinia/hangouts-chat'
   s.license     = 'MIT'
+
+  s.add_development_dependency 'webmock'
 end
