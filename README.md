@@ -12,7 +12,7 @@ or add to your Gemfile
 require 'hangouts-chat'
 ```
 
-## How to use
+## Usage
 ```ruby
 sender = HangoutsChat::Sender.new 'webhook_URL'
 sender.simple 'text'
@@ -31,7 +31,6 @@ Details: [Setting up an incoming webhook](https://developers.google.com/hangouts
 For now supported only [Simple Text Messages](https://developers.google.com/hangouts/chat/reference/message-formats/basic)
 
 ## TODO
-* Add docs
 * Errors reports
 * Support [Card messages](https://developers.google.com/hangouts/chat/reference/message-formats/cards)
 * README badges etc
