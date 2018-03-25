@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.3
+ * Added YARD documentation
+ * Added HangoutsChat::Sender::APIError exception for unsuccessful responses
+
 ## 0.0.2
  * Added tests
  * Improved appearance

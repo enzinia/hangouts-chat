@@ -31,6 +31,5 @@ Details: [Setting up an incoming webhook](https://developers.google.com/hangouts
 For now supported only [Simple Text Messages](https://developers.google.com/hangouts/chat/reference/message-formats/basic)
 
 ## TODO
-* Errors reports
 * Support [Card messages](https://developers.google.com/hangouts/chat/reference/message-formats/cards)
 * README badges etc
