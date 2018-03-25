@@ -23,4 +23,15 @@ class HangoutsChatTest < Minitest::Test
     assert_requested :post, @webhook_url, times: 1, body:
       { text: message }.to_json
   end
+
+  def test_api_error_exception_message
+    stub_request(:any, /chat\.googleapis\.com/)
+      .to_return(status: [403, 'Forbidden'], body: 'Response body')
+
+    exception = assert_raises HangoutsChat::Sender::APIError do
+      @sender.simple('Test exception')
+    end
+    assert_match(/^HTTP 403 Forbidden$/, exception.message)
+    assert_match(/^Body:\nResponse body$/, exception.message)
+  end
 end

@@ -3,6 +3,9 @@ require 'json'
 
 module HangoutsChat
   class Sender
+    # Unsuccessful respond exception
+    class APIError < StandardError; end
+
     # Service class to send HTTP POST requests
     class HTTP
       # Creates HTTP::Post object with JSON content type
