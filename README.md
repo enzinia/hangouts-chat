@@ -1,3 +1,8 @@
+[![Gem Version](https://badge.fury.io/rb/hangouts-chat.svg)](https://badge.fury.io/rb/hangouts-chat)
+[![Build Status](https://travis-ci.org/enzinia/hangouts-chat.svg?branch=master)](https://travis-ci.org/enzinia/hangouts-chat)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c6106eab23781ab0be46/maintainability)](https://codeclimate.com/github/enzinia/hangouts-chat/maintainability)
+[![Inline docs](http://inch-ci.org/github/enzinia/hangouts-chat.svg?branch=master)](http://inch-ci.org/github/enzinia/hangouts-chat)
+
 # Hangouts Chat gem
 Send messages to [Hangouts Chat](https://gsuite.google.com/products/chat/) rooms using incoming webhooks.
 
