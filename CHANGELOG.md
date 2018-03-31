@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.5
+ * Resolved missing dependencies for development and testing
+
 ## 0.0.4
  * Added Card Messages support
 
