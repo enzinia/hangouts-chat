@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.4
+ * Added Card Messages support
+
 ## 0.0.3
  * Added YARD documentation
  * Added HangoutsChat::Sender::APIError exception for unsuccessful responses
