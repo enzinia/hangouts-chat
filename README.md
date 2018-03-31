@@ -13,9 +13,24 @@ require 'hangouts-chat'
 ```
 
 ## Usage
+### Simple Text Message
+Simple messages that appear inline as if typed by a user. Details and format: [Simple Text Messages](https://developers.google.com/hangouts/chat/reference/message-formats/basic)
 ```ruby
 sender = HangoutsChat::Sender.new 'webhook_URL'
 sender.simple 'text'
+```
+
+### Card Message
+More complex messages that have UI elements with actions and HTML support. Details and format: [Card messages](https://developers.google.com/hangouts/chat/reference/message-formats/cards)
+```ruby
+sender = HangoutsChat::Sender.new 'webhook_URL'
+header = { title: 'Pizza Bot Customer Support',
+           subtitle: 'pizzabot@example.com',
+           imageUrl: 'https://goo.gl/aeDtrS' }
+sections = [{ keyValue: { topLabel: 'Order No.', content: '12345' } },
+            { keyValue: { topLabel: 'Status', content: 'In Delivery' } }]
+
+sender.card(header, sections)
 ```
 
 ### How to get Webhook URL
@@ -26,10 +41,18 @@ sender.simple 'text'
 
 Details: [Setting up an incoming webhook](https://developers.google.com/hangouts/chat/how-tos/webhooks)
 
+## Contributing
+Please feel free to contribute any changes, that you want too see in this gem.
+Feature requests are also accepted.
 
-## Comments
-For now supported only [Simple Text Messages](https://developers.google.com/hangouts/chat/reference/message-formats/basic)
+Before Pull Request submitting please check
+* Changed or added code has tests and YARD documentation
+* All tests are pass
+* `rubocop` doesn't report any offenses
 
-## TODO
-* Support [Card messages](https://developers.google.com/hangouts/chat/reference/message-formats/cards)
-* README badges etc
+## Tests
+All tests are use usual Minitest `assert` syntax.
+To run tests execute `rake tests`.
+
+## Changelog
+Changelog is available [here](CHANGELOG.md).
