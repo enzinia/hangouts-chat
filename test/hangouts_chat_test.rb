@@ -24,12 +24,26 @@ class HangoutsChatTest < Minitest::Test
       { text: message }.to_json
   end
 
+  def test_card_message_request
+    stub_request(:any, /chat\.googleapis\.com/).to_return(status: 200)
+    header = { title: 'Pizza Bot Customer Support',
+               subtitle: 'pizzabot@example.com',
+               imageUrl: 'https://goo.gl/aeDtrS' }
+    sections = [{ keyValue: { topLabel: 'Order No.', content: '12345' } },
+                { keyValue: { topLabel: 'Status', content: 'In Delivery' } }]
+
+    @sender.card(header, sections)
+
+    assert_requested :post, @webhook_url, times: 1, body:
+      { cards: [header: header, sections: sections] }.to_json
+  end
+
   def test_api_error_exception_message
     stub_request(:any, /chat\.googleapis\.com/)
       .to_return(status: [403, 'Forbidden'], body: 'Response body')
 
     exception = assert_raises HangoutsChat::Sender::APIError do
-      @sender.simple('Test exception')
+      @sender.simple('Exception test')
     end
     assert_match(/^HTTP 403 Forbidden$/, exception.message)
     assert_match(/^Body:\nResponse body$/, exception.message)

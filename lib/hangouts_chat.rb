@@ -24,6 +24,16 @@ module HangoutsChat
       send_request(payload)
     end
 
+    # Sends Card Message
+    # @since 0.0.4
+    # @param header [Hash] card header content
+    # @param sections [Array<Hash>] card widgets array
+    # @return [Net::HTTPResponse] response object
+    def card(header, sections)
+      payload = { cards: [header: header, sections: sections] }
+      send_request(payload)
+    end
+
     private
 
     # Sends payload and check response
