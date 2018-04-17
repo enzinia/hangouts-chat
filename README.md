@@ -13,11 +13,14 @@ $ gem install hangouts-chat
 
 or add to your Gemfile
 
-```ruby
-require 'hangouts-chat'
+```
+gem 'hangouts-chat'
 ```
 
 ## Usage
+```ruby
+require 'hangouts_chat'
+```
 ### Simple Text Message
 Simple messages that appear inline as if typed by a user. Details and format: [Simple Text Messages](https://developers.google.com/hangouts/chat/reference/message-formats/basic)
 ```ruby
