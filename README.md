@@ -35,8 +35,8 @@ sender = HangoutsChat::Sender.new 'webhook_URL'
 header = { title: 'Pizza Bot Customer Support',
            subtitle: 'pizzabot@example.com',
            imageUrl: 'https://goo.gl/aeDtrS' }
-sections = [{ keyValue: { topLabel: 'Order No.', content: '12345' } },
-            { keyValue: { topLabel: 'Status', content: 'In Delivery' } }]
+sections = [{ widgets: [{ keyValue: { topLabel: 'Order No.', content: '12345' } },
+                        { keyValue: { topLabel: 'Status', content: 'In Delivery' } }] }]
 
 sender.card(header, sections)
 ```
