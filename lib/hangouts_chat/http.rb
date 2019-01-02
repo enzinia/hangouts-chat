@@ -22,10 +22,9 @@ module HangoutsChat
       def post(payload)
         @req.body = payload.to_json
 
-        res = Net::HTTP.start(@uri.hostname, @uri.port, use_ssl: true) do |http|
+        Net::HTTP.start(@uri.hostname, @uri.port, :ENV, use_ssl: true) do |http|
           http.request(@req)
         end
-        res
       end
     end
   end
