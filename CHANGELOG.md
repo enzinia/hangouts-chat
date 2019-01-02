@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.0.6
+ * Fixed proxy ENV support for ruby versions < 2.5.0
+
 ## 0.0.5
  * Resolved missing dependencies for development and testing
 
