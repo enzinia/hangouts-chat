@@ -41,6 +41,26 @@ sections = [{ widgets: [{ keyValue: { topLabel: 'Order No.', content: '12345' } 
 sender.card(header, sections)
 ```
 
+### Message to thread
+
+```ruby
+# Create new thread
+sender = HangoutsChat::Sender.new 'webhook_URL'
+res = sender.simple 'text'
+
+# Response parse
+res_json = JSON.parse(res.body)
+thread_name = res_json.dig("thread", "name") #=> "spaces/SPACES_ID/threads/THREADS_ID"
+
+# Send to thread (simple)
+sender.simple('res message', thread: thread_name)
+
+# Send to thread (card)
+header = {...}
+sections = {...}
+sender.card(header, sections, thread: thread_name)
+```
+
 ### How to get Webhook URL
 1. Open channel to which you want to send messages
 2. Click on the channel name in top bar and select 'Configure webhooks'
