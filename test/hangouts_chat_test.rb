@@ -38,6 +38,32 @@ class HangoutsChatTest < Minitest::Test
       { cards: [header: header, sections: sections] }.to_json
   end
 
+  def test_simple_message_threaded_request
+    stub_request(:any, /chat\.googleapis\.com/).to_return(status: 200)
+    message = 'Test simple message'
+    thread = 'spaces/space_id/threads/threads_id'
+
+    @sender.simple(message, thread: thread)
+
+    assert_requested :post, @webhook_url, times: 1, body:
+      { text: message, thread: { name: thread} }.to_json
+  end
+
+  def test_card_message_threaded_request
+    stub_request(:any, /chat\.googleapis\.com/).to_return(status: 200)
+    header = { title: 'Pizza Bot Customer Support',
+               subtitle: 'pizzabot@example.com',
+               imageUrl: 'https://goo.gl/aeDtrS' }
+    sections = [{ widgets: [{ keyValue: { topLabel: 'Order No.', content: '12345' } },
+                            { keyValue: { topLabel: 'Status', content: 'In Delivery' } }] }]
+    thread = 'spaces/space_id/threads/threads_id'
+
+    @sender.card(header, sections, thread: thread)
+
+    assert_requested :post, @webhook_url, times: 1, body:
+      { cards: [header: header, sections: sections], thread: { name: thread} }.to_json
+  end
+
   def test_api_error_exception_message
     stub_request(:any, /chat\.googleapis\.com/)
       .to_return(status: [403, 'Forbidden'], body: 'Response body')
