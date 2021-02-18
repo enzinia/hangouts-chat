@@ -40,6 +40,7 @@ module HangoutsChat
 
     # Sends payload and check response
     # @param payload [Hash] data to send by POST
+    # @param thread [String] it will be sent as a reply (`nil` is a new thread will be created)
     # @return [Net::HTTPResponse] response object
     # @raise [APIError] if got unsuccessful response
     def send_request(payload, thread: nil)
