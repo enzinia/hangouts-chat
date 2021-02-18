@@ -18,20 +18,22 @@ module HangoutsChat
 
     # Sends Simple Text Message
     # @param text [String] text to send to room
+    # @param thread [String] it will be sent as a reply (`nil` is a new thread will be created)
     # @return [Net::HTTPResponse] response object
-    def simple(text)
+    def simple(text, thread: nil)
       payload = { text: text }
-      send_request(payload)
+      send_request(payload, thread: thread)
     end
 
     # Sends Card Message
     # @since 0.0.4
     # @param header [Hash] card header content
     # @param sections [Array<Hash>] card widgets array
+    # @param thread [String] it will be sent as a reply (`nil` is a new thread will be created)
     # @return [Net::HTTPResponse] response object
-    def card(header, sections)
+    def card(header, sections, thread: nil)
       payload = { cards: [header: header, sections: sections] }
-      send_request(payload)
+      send_request(payload, thread: thread)
     end
 
     private
@@ -40,7 +42,9 @@ module HangoutsChat
     # @param payload [Hash] data to send by POST
     # @return [Net::HTTPResponse] response object
     # @raise [APIError] if got unsuccessful response
-    def send_request(payload)
+    def send_request(payload, thread: nil)
+      payload[:thread] = { name: thread } if thread
+
       response = @http.post payload
       raise APIError, response unless response.is_a?(Net::HTTPSuccess)
       response
