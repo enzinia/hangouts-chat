@@ -16,7 +16,6 @@ Gem::Specification.new do |s|
                   ['CHANGELOG.md', 'LICENSE', 'README.md', 'Rakefile']
   s.test_files  = Dir['test/**/*.rb']
 
-  s.add_development_dependency 'bundler',  '>= 1'
   s.add_development_dependency 'minitest', '~> 5'
   s.add_development_dependency 'rake',     '~> 12'
   s.add_development_dependency 'rubocop',  '<= 0.54.0'
